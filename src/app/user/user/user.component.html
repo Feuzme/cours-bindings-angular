@@ -1,0 +1,20 @@
+<h1>{{texte}}</h1>
+<div *ngFor="let user of users">
+    <img [src]="image"><!--property bindings avec les [*]-->
+    <p *ngIf="user.age <= 40">
+        {{user.prenom}} {{user.nom | uppercase}} est dans la base il a {{user.age}} ans
+    </p>   
+    <button (click)="direBonjour(user.prenom)" >Dire bonjour</button>
+    <input type="text" [value]="user.prenom" (input)="user.prenom = $event.target.value"><!--Trois-->
+    <input type="text" [ngModel]="user.prenom" (ngModelChange)="user.prenom = $event"><!--Méthodes-->
+    <input type="text"[(ngModel)] = "user.prenom">                                    <!--Faisant la même chose AKA transformer la donnée en temps réel-->
+</div>
+<p>
+    {{date | date:"dd MMMM YYY"}} <!--Timestamp peut être remis en forme grâce au pipes-->
+</p>
+<p>
+    {{users[0] | json}}
+</p>
+<p>
+    {{.33 | percent}}
+</p>
